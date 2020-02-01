@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>hidden structure</title>
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
+  </head>
+  <body>
+     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter id="yellow-outline">
+            <feFlood id="outline-color" flood-color="#ffff00AA" result="base"/>
+            <feMorphology result="bigger" in="SourceGraphic" operator="dilate" radius="1"/>
+            <feComposite result="drop" in="base" in2="mask" operator="in"/>
+            <feBlend in="SourceGraphic" in2="normal" mode="normal"/>
+        </filter>
+    </defs>
+</svg>
+  	<div id="game">
+       <div id="locked_door_white" class="locked_door_white" style="left: 350px; bottom: 500px;"></div>
+       <div id="locked_door_black" class="locked_door_black" style="left: 500px; bottom: 250px;"></div>
+       <div id="key_card_white" class="key_card_white" style="left: 500px; bottom: 150px;"></div>
+       <div id="key_card_black" class="key_card_black" style="left: 450px; bottom: 500px;"></div>
+  		 <div id="player" class="person" style="left: 150px; bottom: 350px;" onclick="stat()"></div>
+       <div id="monster" class="person" style="left: 50px; bottom: 500px;"></div>
+       <div id="medicKit" style="left: 100px; bottom: 50px;"></div>
+       <div id="portal" style="left: 100px; bottom: 100px;"></div>
+       <div id="bullet" style="left: 200px; bottom: 100px;"></div>
+       <div id="pistol" style="left: 200px; bottom: 100px;"></div>
+
+       
+       <div id="panel" class="world"></div>
+       <div id="navigator" class="world">
+           <button id="up" onclick="up()">up</button><br>
+           <button id="left" onclick="lefty()">left</button>
+           <button id="use" onclick="use()">use</button>
+           <button id="right" onclick="right()">right</button><br>
+           <button id="down" onclick="down()">down</button>
+       </div>
+       
+  	</div>
+    
+    <script type="text/javascript" src="JS/logik.js"></script>
+    <div id="message"></div>
+    <div id="exit_door" style="display: none"></div>
+  </body>
+</html>

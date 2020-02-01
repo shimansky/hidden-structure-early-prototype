@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css?family=Sedgwick+Ave&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Scope+One&display=swap');
+
+::-webkit-scrollbar { /* chrome based */
+    width: 0px;  /* ширина scrollbar'a */
+    background: transparent;  /* опционально */
+}
+
+html {
+    -ms-overflow-style: none;  /* IE 10+ */
+    scrollbar-width: none; /* Firefox */
+}
+
+
+@keyframes blinker {
+  from { opacity:  1; }
+   50% { opacity:  0.0; }
+    to { opacity:  1; }
+}
+
+
+@keyframes bit {
+  from {  color: red; }
+   15% {  color: white;}
+   35% {  color: red;}
+   55% {  color: white; }
+    to {  color: red; }
+}
+
+
+
+body, html{
+	margin: 0;
+	padding: 0;
+	min-height: 600px;
+	min-width: 600px;
+	background-color: black;
+	text-align: center;
+	color: white;
+	 overflow: auto; 
+}
+
+button{
+    width: 50px;
+	height: 50px;
+	border: 1px solid white;
+	border-radius: 5px;
+	display: inline-block;
+	transition: all 0.5s ease; 
+	font-size: 12pt;
+	font-family: impact;
+	color: white;
+	background-color: black;
+    
+
+}
+
+button:hover{
+	filter:drop-shadow(0px 0px 15px white);
+	background-color: #93b378;
+	color: black;
+	border: 1px solid white;
+	border-radius: 10px;
+	
+	
+}
+
+h1{
+	font-family: 'Sedgwick Ave', cursive;
+	color: red;
+	filter:drop-shadow(0px 0px 15px red);
+	font-size: 30pt;
+	
+}
+
+h2 {
+	font-family: 'Scope One', serif;
+}
+
+.box {
+	width: 100%;
+	height: 100%;
+  display: block;
+}
+
+.box div {
+  display: inline-block;
+  width: 25%;
+  height: 25%;
+}
+
+
+#game{
+	width: 600px;
+	height: 600px;
+	margin: 0; 
+	padding: 0; 
+	display: block;
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	background-image: url(../IMG/OficceFloor.jpg);
+    
+
+}
+
+#player{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	color: yellow;
+	text-align: left;
+	background-image: url(../IMG/player_r.png);
+	display: inline-block;
+	z-index: 999;	
+
+}
+
+#player:hover{
+  filter: url(#yellow-outline);
+}
+
+
+#bullet{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	background-image: url(../IMG/bullet.png); 
+	display: inline-block;
+	z-index: 800;	
+	/*transition: all 0.1s ease-in; */
+
+}
+
+
+
+#monster{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	color: red;
+	text-align: left;
+	background-image: url(../IMG/monster_r.gif);
+	background-size: 140%;
+	filter:drop-shadow(0px 0px 15px black);
+    transition: all 0.2s ease; 
+    z-index: 800;
+}
+
+#monster2{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	background-image: url(../IMG/monster_r.png);
+	background-size: 140%;
+	filter:drop-shadow(0px 0px 15px black);
+    transition: all 0.2s ease; 
+    z-index: 800;
+}
+
+#portal{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	background-image: url(../IMG/portal.png);
+	display: inline-block;
+    z-index: 900;
+}
+
+
+
+
+
+#panel{
+	width: 150px;
+	height: 50px;
+	position: absolute;
+	left:450px;
+	bottom: -50px;
+	padding: 0;
+	margin: 0;
+	font-size: 15pt;
+	font-family: impact;
+}
+
+#editor{
+	width: 50px;
+	height: 500px;
+	position: absolute;
+	left:650px;
+	bottom: 50px;
+	padding: 0;
+	margin: 0;
+}
+
+
+.w{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	background-image: url(../IMG/OficceWall.jpg);
+	filter: drop-shadow(16px 16px 20px black);
+	z-index: 1;
+}
+
+.o{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+}
+
+#black{
+	width: 50px;
+	height: 50px;
+	background-color: black;
+	padding: 0;
+	margin: 0;
+	z-index: 0;
+}
+
+
+
+
+.wc{
+	width: 50px;
+	height: 50px;
+    display: inline-block;
+	padding: 0;
+	margin: 0;
+	background-image: url(../IMG/OficceWallCooler.jpg);
+	z-index: 1;
+}
+
+.wp{
+	width: 50px;
+	height: 50px;
+    display: inline-block;
+	padding: 0;
+	margin: 0;
+	background-image: url(../IMG/OficceWallPlant.jpg);
+	z-index: 1;
+}
+
+.ws{
+	width: 50px;
+	height: 50px;
+    display: inline-block;
+	padding: 0;
+	margin: 0;
+	background-image: url(../IMG/OficceWallSofa.jpg);
+	filter: drop-shadow(16px 16px 20px black);
+	z-index: 1;
+}
+
+
+
+
+#locked_door_white{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	display: inline-block;
+	background-image: url(../IMG/OficceDoorClosedWhite.jpg);
+	z-index: 700;
+}
+
+#locked_door_black{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	display: inline-block;
+	background-image: url(../IMG/OficceDoorClosedBlack.jpg);	
+	z-index: 700;
+}
+
+#exit_door{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	display: inline-block;
+	background-image: url(../IMG/Exitdoor.jpg);
+	z-index: 700;
+}
+
+.ud{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	background-image: url(../IMG/OficceDoorOpen.jpg);
+	z-index: 1;
+}
+
+.ud_rd{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	display: inline-block;
+	background-image: url(../IMG/OficceDoorOpen.jpg);
+	z-index: 1;
+}
+
+#key_card_white{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	display: inline-block;
+	background-image: url(../IMG/key_card_1.png);
+	animation-name: blinker;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+    filter:drop-shadow(0px 0px 5px blue);
+    z-index: 700;
+}
+
+#key_card_white:hover{
+  filter: url(#yellow-outline);
+}
+
+#key_card_black{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	animation-name: blinker;
+	animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+	background-image: url(../IMG/key_card_2.png);
+	filter:drop-shadow(0px 0px 15px blue);
+	display: none;
+	z-index: 700;
+}
+
+#medicKit{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	display: inline-block;
+	background-image: url(../IMG/medic_kit.png);
+	filter:drop-shadow(0px 0px 15px red);
+	z-index: 700;
+}
+
+
+#pistol{
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	display: inline-block;
+	background-image: url(../IMG/pistol.png);
+	z-index: 700;
+}
+
+
+
+.ow{
+	width: 50px;
+	height: 50px;
+    display: inline-block;
+	padding: 0;
+	margin: 0;
+    background-image: url(../IMG/flor_wood.jpg);
+    z-index: 1;
+}
+
+.oa{
+	width: 50px;
+	height: 50px;
+    display: inline-block;
+	padding: 0;
+	margin: 0;
+    background-image: url(../IMG/OficceFloor.jpg); 
+    z-index: 1;
+}
+
+
+
+.op{
+	width: 50px;
+	height: 50px;
+    display: inline-block;
+	padding: 0;
+	margin: 0;
+    background-image: url(../IMG/OficceFloorTable.jpg);
+    z-index: 1;
+}
+
+
+
+.we{
+	width: 50px;
+	height: 50px;
+    display: inline-block;
+    background-color: black;
+	padding: 0;
+	margin: 0;
+	z-index: 1;
+}
+
+#navigator{
+    width: 250px;
+	height: 50px;
+	position: absolute;
+	left:150px;
+	bottom: -50px;
+	padding: 0;
+	margin: 0;
+	display: none;
+}
+
+
+
+
+
+
+
+
+#message{
+	display: none;
+	width: 600px;
+	height: 600px;
+	position: absolute;
+	left:0px;
+	bottom: 0px;
+	padding: 0;
+	margin: 0;
+	border:50px solid red;
+	background-color: black;
+	text-align: center;
+	font-family: 'Sedgwick Ave', cursive;
+	color: red;
+	font-size: 30pt;
+	box-shadow: 0 0 100px black;
+	z-index: 1000;
+}
+
+
+#menuArea{
+	min-width: 500px;
+	display: inline-block;
+	margin-top: 10px;	
+}
+
+
+@media (max-width: 600px) {
+   #navigator{
+    width: 250px;
+	height: 50px;
+	position: absolute;
+	left:150px;
+	bottom: -50px;
+	padding: 0;
+	margin: 0;	
+}
+ } 
+
+
+
+
