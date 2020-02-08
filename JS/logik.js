@@ -14,6 +14,8 @@ var col =12;
 var step=-50;
 var flag = 1;
 var botLife = 3;
+var timerId;
+var newMap =[];
 
 // Определяем адрес в строке и загружаем карту уровня
 getLocation();
@@ -42,6 +44,9 @@ portal=document.getElementById('portal');
 panel.innerHTML="life:" + life;
 setInterval(get_coordinates,250);
 timerId = setInterval(botMove,450);
+  if(buferLocation=="ctor00.html"){
+       clearInterval(timerId);
+       }
 setInterval(findExit,250);
 getIdOfDiv();
 setIDOfDiv();
@@ -75,17 +80,17 @@ function render () {
 // логика работы редактора карт
 function getIdOfDiv(){
 document.querySelector('#editor').addEventListener('click', function(e){ 
-  tempId = e.target.id; 
-  console.log(tempId);
-  return tempId;
+  tempClassName= e.target.className; 
+  console.log(tempClassName);
+  return tempClassName;
 });
 
 }
 
 function setIDOfDiv(){
 document.querySelector('#game').addEventListener('click', function(e){ 
-   e.target.id = tempId; 
-  console.log(tempId);
+   e.target.className = tempClassName; 
+  console.log(tempClassName);
 });
 
 
@@ -515,7 +520,6 @@ function hideMassege(){
   
   message=document.getElementById('message');
   message.style.display="none";
- 
 }
 
 
@@ -524,6 +528,31 @@ function stat(){
     alert("Life: " + life  
         + "Location: room" + tempLocation);
 }
+
+
+function createMap(){
+  var mapArr=game.getElementsByTagName('*');
+    var l = 0;
+  for(i=19;i<=162;i++){
+  
+      newMap.push('"'+mapArr[i].className+'"');
+      l++;
+      if(l%12==0){
+        newMap.push("<br>");
+      }
+   
+  } 
+ var stringMap = String(newMap);
+ console.log(stringMap);
+
+     function showNewMap(){
+        message.style.display="block";
+        message.style.fontSize="15pt";
+        message.innerHTML=stringMap; 
+      }
+ showNewMap();
+}
+
 
 
 
